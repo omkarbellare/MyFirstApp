@@ -24,6 +24,7 @@ import android.widget.Toast;
 
 public class MainActivity extends Activity {
 	public final static String EXTRA_MESSAGE = "com.example.myfirstapp.MESSAGE";
+	public static String ip = "";
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -39,7 +40,7 @@ public class MainActivity extends Activity {
 
 	@SuppressLint({ "NewApi", "NewApi" })
 	public void sendMessage(View view){
-		String ip = "", result="";
+		String  result="";
 
 		StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
 		StrictMode.setThreadPolicy(policy);
@@ -63,7 +64,7 @@ public class MainActivity extends Activity {
 		}
 
 		try{
-			URL connectURL = new URL("http://192.168.1.17:8082/registerDevice?ip="+ip);
+			URL connectURL = new URL("http://192.168.1.10:8080/registerDevice?ip="+ip);
 			URLConnection conn = connectURL.openConnection();
 
 			// Get the response
